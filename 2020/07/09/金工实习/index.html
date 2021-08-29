@@ -1,306 +1,324 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head profile="http://gmpg.org/xfn/11">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>爱情小站</title>
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"  media="print" onload="this.media='all'">
-
-  <!--百度统计-->
-
-</head>
-
-
-<body class="main">
-  <div class="clouds">
-    <div id="wrapper">
-      <div id="innerWrapper">
-        <div id="pageTop"></div>
-        <div id="pageHeader">
-          <div id="anniversary">
-            <span>18576</span>
-          </div>
-          <ul id="pageNav">
-            
-          </ul>
-        </div>
-        <div id="pageContent">
-          
-
-          <div id="articleMale">
-
-            <main id="app">
-
-              <div class="timenode" v-for="item in contents" v-cloak>
-                <div class="meta">
-                  <p><time v-bind:datetime="item.attributes.time">{{item.attributes.time}}</time></p>
-                </div>
-                <div class="body">
-                  <p v-html='item.attributes.content'></p>
-                </div>
-              </div>
-              <div class="load-ctn">
-                <a class="btn lv" v-on:click="loadMore1" v-if="contents" v-cloak>再翻翻</a>
-                <p class="tip" v-else>别急，加载呢</p>
-                </div>
-              <p class="tip">共计发送 {{count}} 条说说</p>
-            </main>
-
-
-
-
-
-
-
-          </div>
-
-          <div id="articleFemale">
-
-            <main id="app2">
-
-              <div class="timenode" v-for="item in contents" v-cloak>
-                <div class="meta">
-                  <p><time v-bind:datetime="item.attributes.time">{{item.attributes.time}}</time></p>
-                </div>
-                <div class="body">
-                  <p v-html='item.attributes.content'></p>
-                </div>
-              </div>
-              <div class="load-ctn">
-                <a class="btn lv" v-on:click="loadMore2" v-if="contents" v-cloak>再翻翻</a>
-                <p class="tip" v-else>别急，加载呢</p>
-                </div>
-              <p class="tip">共计发送 {{count}} 条说说</p>
-            </main>
-
-          </div>
-          <div class="clear"></div>
-          <div id="footer" class="footer">
-
-    <p align="center"><strong>COPY RIHGT&copy; 2020</strong> | Themes:<strong
-            style="color:#94A4FF">Sweet</strong>-<strong style="color:#FFB296">Clouds</strong> By <a
-            href="https://www.heson10.com" target="_blank"><strong>Heson</strong></a></p>
-
-    <p align="center"> <a href="https://love.heson10.com" target="_blank" rel="noopener" title="情侣微博">
-
-            <strong>情侣微博1.0</strong> 持续优化中
-
-        </a> Proudly By <a href="http://hexo.io" target="_blank">Hexo</a></p>
-    
-<script src="/js/jquery.js"></script>
-
-    
-<script src="/js/all.js"></script>
-
-    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
-    <script>
-
-        var {
-            Query
-        } = AV;
-        AV.init({
-            appId: "2MvkGl6UDyIfeSHUgtd1O8Is-gzGzoHsz",
-            appKey: "BpNwh0Cx2gtk38vom1BHCllJ",
-            serverURLs: 'https://love.beyback.top'
-        });
-
-        var query = new AV.Query('content');
-
-
-
-
-        var app = new Vue({
-            el: '#app',
-            data: {
-                page: 0,
-                count: 0,
-                contents: []
-            },
-            methods: {
-                loadMore1: function (event) {
-
-                    var {
-                        Query
-                    } = AV;
-                    AV.init({
-                        appId: "2MvkGl6UDyIfeSHUgtd1O8Is-gzGzoHsz",
-                        appKey: "BpNwh0Cx2gtk38vom1BHCllJ",
-                        serverURLs: 'https://love.beyback.top'
-                    });
-
-                    var query = new AV.Query('content');
-                    getData1(++this.page);
-                }
-            }
-        })
-
-        var app2 = new Vue({
-            el: '#app2',
-            data: {
-                page: 0,
-                count: 0,
-                contents: []
-            },
-            methods: {
-                loadMore2: function (event) {
-                    var {
-                        Query
-                    } = AV;
-                    AV.init({
-                        appId: "HgGMkqu9Ry1W6sgpGYPl6Siy-gzGzoHsz",
-                        appKey: "frrh1fv6JKu07Wn9qSmzl7Iz",
-                        serverURLs: 'https://hggmkqu9.lc-cn-n1-shared.com'
-                    });
-
-                    var query2 = new AV.Query('content');
-
-
-
-
-
-
-                    getData2(++this.page);
-                }
-            }
-        })
-        query.count().then(function (count) {
-            app.count = count;
-        }, function (error) { });
-
-        getData1(0);
-
-        var {
-            Query
-        } = AV;
-        AV.init({
-            appId: "HgGMkqu9Ry1W6sgpGYPl6Siy-gzGzoHsz",
-            appKey: "frrh1fv6JKu07Wn9qSmzl7Iz",
-            serverURLs: 'https://hggmkqu9.lc-cn-n1-shared.com'
-        });
-
-
-        var query2 = new AV.Query('content');
-
-        query2.count().then(function (count) {
-            app2.count = count;
-        }, function (error) { });
-
-        getData2(0);
-
-        function urlToLink(str) {
-            // var re = /(http|ftp|https):\/\/[\w-]+(.[\w-]+)+([\w-.,@?^=%&:/~+#]*[\w-\@?^=%&/~+#])?/g; 
-            var re = /\bhttps?:\/\/(?!\S+(?:jpe?g|png|bmp|gif|webp|gif))\S+/g;
-            var re_forpic = /\bhttps?:\/\/.*?(\.gif|\.jpeg|\.png|\.jpg|\.bmp|\.webp)/g;
-            var re_forpic_vx = /^http:\/\/mmbiz\.qpic\.cn[^\s]*/g;
-            str = str.replace(re, function (website) {
-                return "<a href='" + website + "' target='_blank'> <i class='iconfont icon-lianjie-copy'></i>链接 </a>";
-            });
-            str = str.replace(re_forpic, function (imgurl) {
-                return "<img src='" + imgurl + "'  /> ";
-            });
-            str = str.replace(re_forpic_vx, function (imgurl) {
-                return "<img src='" + imgurl + "'  /> ";
-            });
-            return str;
-        };
-
-        //男生获取哔哔
-        function getData1(page = 0) {
-            query.descending('createdAt').skip(page * 10).limit(10).find().then(function (results) {
-                if (results.length == 0) {
-                    alert('之前没发表过说说了')
-                } else {
-                    let resC = results;
-                    reqData = false;
-                    resC.forEach((i) => {
-                        let d = new Date(i.createdAt);
-                        datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-                        i.attributes.time = datetime;//☆友好地显示时间改为 i.attributes.time = timeago(d);
-                        i.attributes.content = urlToLink(i.attributes.content);
-                        app.contents.push(i);
-                    })
-                }
-
-            }, function (error) { });
-        }
-
-
-        //女生获取哔哔
-        function getData2(page = 0) {
-            query2.descending('createdAt').skip(page * 10).limit(10).find().then(function (results) {
-                if (results.length == 0) {
-                    alert('之前没发表过哔哔了')
-                } else {
-                    let resC = results;
-                    reqData = false;
-                    resC.forEach((i) => {
-                        let d = new Date(i.createdAt);
-                        datetime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-                        i.attributes.time = datetime; //☆友好地显示时间改为 i.attributes.time = timeago(d);
-                        i.attributes.content = urlToLink(i.attributes.content);
-                        app2.contents.push(i);
-                    })
-                }
-
-            }, function (error) { });
-        }
-
-        //友好地显示时间,按需修改上面标记☆的代码
-        function timeago(dateTimeStamp) {
-
-            var minute = 1000 * 60;
-            var hour = minute * 60;
-            var day = hour * 24;
-            var halfamonth = day * 15;
-            var month = day * 30;
-
-            var now = new Date().getTime();
-            var diffValue = now - dateTimeStamp;
-
-            if (diffValue < 0) {
-                //非法操作
-                //alert("结束日期不能小于开始日期！");
-            }
-
-            var monthC = diffValue / month;
-            var weekC = diffValue / (7 * day);
-            var dayC = diffValue / day;
-            var dayR = diffValue / hour % 24;
-            var hourC = diffValue / hour;
-            var hourR = diffValue / minute % 60;
-            var minC = diffValue / minute;
-            var minR = diffValue / 1000 % 60;
-            if (monthC >= 1) {
-                result = getLocalTime(dateTimeStamp / 1000);
-            } else if (weekC >= 1) {
-                result = parseInt(weekC) + "周前";
-            } else if (dayC >= 1) {
-                result = parseInt(dayC) + "天" + parseInt(dayR) + "小时前";
-            } else if (hourC >= 1) {
-                result = parseInt(hourC) + "小时" + parseInt(hourR) + "分钟前";
-            } else if (minC >= 1) {
-                result = parseInt(minC) + "分钟" + parseInt(minR) + "秒前";
-            } else result = "刚刚发表";
-            return result;
-        }
-
-        function getLocalTime(nS) {
-            return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
-        }
-
-    </script>
-
-
-
-</div>
-        </div>
-      </div>
-    </div>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="https://beyback.top/images/favicon.png?v=2.0.1" type="image/png" sizes="16x16"><link rel="icon" href="https://beyback.top/images/favicon.png?v=2.0.1" type="image/png" sizes="32x32"><meta name="baidu-site-verification" content="hC2kcXC5gp"><meta name="description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-2020学年第二学期金工实习">
+<meta property="og:url" content="https://blog.beyback.top/2020/07/09/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/index.html">
+<meta property="og:site_name" content="爱情小站">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-09T01:21:52.668Z">
+<meta property="article:modified_time" content="2021-01-07T02:29:17.674Z">
+<meta property="article:author" content="Charles">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="实习">
+<meta property="article:tag" content="学业">
+<meta name="twitter:card" content="summary"><meta name="keywords" content="Charles, 爱情小站"><meta name="description" content=""><title>2019-2020学年第二学期金工实习 | 爱情小站</title><link ref="canonical" href="https://blog.beyback.top/2020/07/09/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.1"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?0859c9cd4186b8c06da1a974ea00b35f';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":true},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friends/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">朋友们</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">关于我</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://beyback.top/about/" target="_blank" rel="noopener"><span class="header-nav-submenu-item__icon"><i class="fas fa-laptop"></i></span><span class="header-nav-submenu-item__text">电脑版</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://beyback.top/404.html" target="_blank" rel="noopener"><span class="header-nav-submenu-item__icon"><i class="fas fa-mobile"></i></span><span class="header-nav-submenu-item__text">手机版</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">爱情小站</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">2019-2020学年第二学期金工实习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-07-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-07</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">9</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2020/07/09/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/" data-flag-title="2019-2020学年第二学期金工实习"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body"><div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">您好, 这里需要密码.</label>
+    <div class="bottom-line"></div>
   </div>
-</body>
-</html>
+  <script id="hbeData" type="hbeData" data-hmacdigest="35cffe53940d43938e6776b16bf529dbd46084a824cfc583e53d8c39a05e50e5">3902f9c91b7ba38726ca64ac3ed0fc34da0fef78c2f75172d5d442bf276106e65bf460c1e93903e49580636e8e258a44fbf8a7d9677edb596bb7e7871da4adeab14271d98bf43e1969138cdd951ab6223521ed66904b8acff30c1c150c99e279214b22635c6b2365982b4e1b8c95b497c8b37046f9963131c39de88f194a95515f27b946da801c5e7fb9d256ead263acf9060492611c4b7e800484fe5f792aebbc36348b542289ede3ed9ec5850b6049cf0483658eeeec404e9fa88c6fd0384d2d0a4da572469e22dad462a19f505540763cbad4f2cd973581acbfdfd399a87738eb097866dbb58c5bb44a6d803d5b7b86b1ef9b84ab4ec046471d76b593599d51b3be5e10387fb0c4b4241acf0f2a974e0087d605c7af3e8274f79ea2e6235303af4857010ff4068a0b7ed0862702a431b5ca2cc637b0dff39e8d7231edb15ac7caf1a8409c4425339f6e7268d06d72307dba8c26fe2bf3e5e00387657ea8d01ee0aa7e0a30a53e37a66f52f36cfc2113af1c28a409e770daf4dc539ad55233af50358f4d81eeaf9ba4f009faaf9e32145f62fe010c989e22cb4458d0e3f594d62b827f63d3e4b5e6fdffb2b43d4a8d5173230de5050791097edeaeaab2751db7b09997389884d3637d21489642816a35dc3dbdd5b2efdf4c092888f2ea120a54de9f5e0e57892b6973dea266dc1fbbb346333dfbc2cfa173f4768cc768c6a3c2cd81a87e009e7de3dc596ede56484eff9962883d04c6b14a63682ea2cfaf5b04bf5d71ebbdc370cfae2de36092e4dc986b17ca9f6d2b5a19301c17b376475dbd2194a83e984f98954b3edcfc8d1d9bfc69acb31803021adb5d34a3ada05b705ad5090055b211407bb2abb738015f27169b4bb16fb64b7cbfbe456e2fd734661c9e76ce09d887d98613f6f3f15d1c6674c733f5bec67b26a18899213788f038eafe35054c43c5dfe53cd517bd70a5bbe4111538518e9bee5f3ab96f4aa7333fb464b2bf15d803fd138bdd0e2dc6f47e9ae2d3043dfa59011545ad787d69f6c916b110c397594ff56e8bf1341fbb03f7ff76b273117aee69c9f34e519f90620c9569a7d90c668452856e6bfb5dad2d37459da61b92c0cf8a4539a2680ee935e10693779f15c56b521ab2ac6af9655d716336fc7f95f9a0d4ceebb6dae988f53fe1e9919f10477141aaf5e0c2dde9af00c1ebb22074ed98dabe8aae43624f4fb743d268fca7a4579bedae62bccc8ffa316adf3539c06aa7504840e88180716b01da5593e77a2374d1efb6e5778986241de432319e52eaaeaa16e090689459b0b90e117b751688200bf3a756ab20572ac015e975bb0031b8c3c97cae9c036cbb1d03d19b4705dce839ad0867ec46e00d9af1393dec53be0482bcb449ceb9b25ecbaab23ec6e623c830267f8eb4fda2cb3c9b4a10aae645410f444dafde9568b0bdc1c8703af84c6f0d36b02cc58854ecf114ee4376d2aaa4a170b515bb53f2063293a7ab77d8fa52a978c039cb2db2016f6c596502803268490faa168bb25e4c908058a0e5b4855d9a6e423667b026402ad96b0cf959ea34d72994cda45c7b96c921dec0cc4d87114456c503c4d3d5cdaa3ba046ffc1a3a7fc58d42a7404d05c77d0c81efc5ad3cb550a739829e4bfb3ab8d5e58cc23b1b8a6a5e63b948d257783aa8c1615bd492bac691878addb5a2c0e8244d4235e6b0c1a8582b54f1a36218a606c6422a6a000ee3c3689660e3d13ce02b8d13db8e60b7f95e70e0754d1054308075beea47d5695192bac7408d6a3fbb07307d648d44b15c568671e0ad3280f011aaf81cfa745ee6a3f58bcc7d883effdfc6a969d0f8b7065fba05b99b58598f635e9315625e8e4f4451ccb1ef2a9555dd40d4ba82f64c608daa2e956fe28acb66d0ddfc4f1734741c59ee16b084f51eed5766b91fd79217f6fa93e0a2815056cf881be6aaf6a23c0968c42f28236d5dd6dc206b87e004cd5669506017753957832f0ece0fd3153da405f03d3b8ddc3624ac2808e055cca7ecc7c8e75b865d31364a8db396dbb9fbb40c84d7b76992fdb79a9759f9084de44ca5ac872e11d6d8976e5b12408efde50b3bb19984c4951d7a9d397d168d2f8a0fe542a92a9b4bad18cdb8795cf0bc319845c7e81923980e5dafd6a7eea09e4c55dac507a4886c363e003fd1ad516ac9145b4c28f35a0f04602e69ddecfbab39c83a32cbbddf3cd0df51c9ee619d1ab05b795f16d1b3d76bf868c8f3520d40b52679b2626b9df19a0ab8eb98302be694cde04b429ff81c4e9724ea801fd5a1d308817266af717f19d63dc5a185d8cc1e3a2f9d5b5499defc0f18585f12ec7ebe0904bff4c21cf2277c857a903fc1f441e61e0866667f7160488a8737c3ea17809614f21ffc7247ce2afed220dd2f23a528752ce525ffe2cd8fb9c9b6b60bdeef06faedad150faaebc4f9f87d7c83940976f4567f2adeada9189a1c46343d767f23aa6911881b2a45905626dfe816adee68d18ea65035267a1cef06433f299a34838ca5ee59e34df45d03f301bbc02a2ac65759b0f893ce4b63e47c6174c8459801d27cc98e657c9ebf4f84b430366d4449aeb47d18cf766d6fe996c0af61494409d720881e3b11c98a8dd81247978243bca96199a400f3fd42aa893f37ddbd06c578d5eb6814b0ce0a5381089504e527898c70f3416436fd69e57f0adeaed6cf7e60a21e89c4ff6b07133a0c15d1a4ec34f37baa819378780732523de6f975613055481ccd9fe335f5703cea26b1a1f2f0c673bec17dec28ab41d1e09ca40ac25ec82c89ad74d38072e845a0cbceeee69651e50ba87df19a8663b03fb0a1e71184b7d4f12977149766054a668d4f75cf36d29993896de57c9a6c38cc1fe49f1b087d7d1493f86f311612ad60c4e3ab725c35aa9a3d2c1d3b87be6924b494831b2eb49e2c9a6906fc216220550f2881a9742d3e29d636a91e9c47014d487ed546791f90a3f87e94ccdf5b5da85b1c5e15b7f58b789c3f1be89fe1a2ac207bff019bea3fa1026d626b4cc189d67680fdb601730558e2348fb8d6191366a847770c10e4776ad9aee9b2a2bdcf61ccb61128b21be25be2d01b51f1f2e6d23ca8f7900344f20dab6ea9c13d6a8839a559f16c3b4982537aec38145aa283006d7f538bdbf278a245bc8155736a1b1e9afecd647789a474f219dce96591f7b2aa479ca6f645a1abb034b8cbcfca62aafda02714af6ef82deb436f5adddaaceb1efebc02833ea414c084b31ce09e78641e987c8148bc94b0be6bd70fb5c0b813d3da6f7998b4af6dccf39545a128bbcb1b98c1e383d5838c8a7ff22554a69a6b4b93d7de236aadd21deea561ddbf67a1bd392366054b8f9796ad496e982aae47e54091b133ff46025249d22284c3939ff70e8931bb03d2c003e5b568dc8250598af69df356974b96f7481320de9d4a93a0d15f1ae44a6771d7db6011c7e4cffa2b2ddac97de781594280b51015bf36a6ee4e8b21c9633a0d5e50833cb546f2039fcfa753f467119f0f2cda6314a8378b4f24b25058781b8245adf9fe2d953e8dd76e6553070cc75fedd94ef7c3e55191ffbf675ed73668d5e95c1ddf20c05ac2d7977f74845ffe8dc6c4150ddcb085ad8c4acdf0cffde2af2c08eff0b913be6b8e95240ff8a53ebe4224638ce4f8273b3d1673371884138b55542086c0195766b878dcadce99fde207367e1fae0b4683da232b3f467bf36ff4c9d75ad4de962e82d21b0d86cae4e6d05b3bd4de112072d3df3e1741dd10dc15d9be4c9adc3aaef6542d71aa4e69946426bea20d27a26f520f83477c38a39f16bb9b6d56820ed18f48ba766f369298cbf44b5a52f3c5a12aebe00fdf5cf0621ddc79fd101f694c9852d4e4de3144b6077820cd11444123f75b22192c578cd8327557669744d5d8729ec0e2876558e3be32c1b9e6bd8b2452bf08c5d85dfe1714610bdcc9f561018cd752a643c41b0d99ed977d2cd1ca963f8237e582cc9aa6eb7e4143bd0de1b49579a506a3fc8d26a6ff22ff68934295618d55aa8884c99e26f810a50f12c7b31cf23fca14748b9d731ae96821da305250c6e1af7e08e147177fb599c1b92befda8075cf2bef51aa353026175c0b9a0872dac730604039b8bab2fdabd512d19c96b4b91152841c87882404a1b59988fb56ae403ee3ddd821beba3b4b4a7d4c0401d2378d0d4bf34f85711245ffcb0484ced4a22416a4a98f20d6a16580d0f4beec06736f13f5acecb978ba3db5b70db91897f00dbede611848f0b9f1df566edea5a0a7133b61ccce36fddf24b7c8f84f7e75cf1b2edc7dc94e3c827094276ad8e1529f2b73e73a7b14c7c4ce10992cbb3d516441e38aeb8ea0a0c8e34425e4546ed9f60c70bee81b07fda09939ce89f3a4e8ed46e18dd57f7d5242f9c2b34c7046864c3ac67e9cb85e4d011e1df807022dc33eb3685b37b4f09f54f84466f7bb0f04d9f131a4fe9cc813fef1361beedb7a58b1fea9c6629dcc9862d5e821f5f42ca61a66803d448a71ae5b04a8793898d66002f63617ef7f796ace584f5de37b83718792e43fba7db7c07ac8d468fc593521cbffe8dd2a730f45150d814021dab537ec9cfaa510f4e08dfaa4d1e05a73731c1c4ce4d08d7934f01c72e03f9ede56c7d16985924aa8b5bbcf23847f00355f3c27eef1a288821eac5b04f91b1fb17d3917dff8bcc56edd4d1d48d4b29748d654eef3f6551a6d966bb6064372003f4ae58c195ac6b597f3eb29131e17b2c40d6e4ba8e6d55d3bacb573bb9e51df1630dc08b01743a6dfd7016a4de41503c08b0bba2d31defcb82891ef089a877f4d0ba920fb39c409f3cfb773f4a9495bb7deac9c4ef91282390f9895ee49cca5318a61746ea665b5005561065c8cb24e2dfdd391f478221d8c328641e649a92ded8d881887691d788671a22132ff6f0c1eccb9b4990404229f4342214877f7614f8588478a19d0c0a6bd592468e9fc26c89c2268796c9c5b2330ee111486f4864d709c5653fccbda560008a4b9fc48118bf28865f119b03149d750f9522ea8426bc5aa8f54f6afb98d5e4b180d3cba7ff4127a778e096eee088ab037a7eae5f5173c7bcd3b11b59c00c59db874817a1ab5ae98068d99be9fb6475e672c8e25b6a258f2eb98c28dbd707c53a9b26d8af6ca93ed43a642c8eb30bafeb55afc758d991d4c57cd064c2e70486dd430f9c3e4d7ef46e49dcc11fa78097e00f8988e01b4b99da5b845f12371b969638cf29ea486b6763de7d9e8a3a46acfa2d1aa9df5e60b27a8681ef2c8107dd4cfea26fe3ee10ea86b99b35f941490e415a7dead9ed89142aac741f3d286caa164750a70fdef4f03a0a185f2d8abaa508c04c4ebcb05513ce65956ba4065fbde5f28eebe25051f3fe419559337adf60bdcb289e1f5b51abe300bf06db0b5044ca9fd1a1624be6d79e7d7d1b4060283ffc02201985a6dae30bf1d8dbde747bdb98c159e595efe5c070d3a8c899877502e0a52dc7a4a52bb77deb4bae792ac6c977a5655761c201ced47e58138616a1deb316f0a79cafbec93b049493960092f909c2a3bf4a2804e6e56ff0dd8d0b84d74e0d79a5c370d9eba83d9e366ab41549232a9571a362ff94dd96e41b007d91690279405f072cd1e7f6ba81dd401909d3e9fe372faef5ac8b1142e7a8b45f50e73bc317e49bf0f4fd18747f04da669e8a0f456a26a1f053aaf31f9df19859cc03c3d3d623ddc0c5ef29df8a42af2b4c4c384ea2402d47e456a5041aaf0350badbbef946e2cfc65e6f1bfe62c7bff7be5b8763e67f0195d9a2dfa03a8ba98dd7706eea89d76295eddf0d518982f60c2c690a20c0b20bdd0a6e378f6427aab71dea8cd80a7382d04163774c40cfec0e00137548f602cf5dec7ae366b8b4300e9d48d98eb56f9dbf9927dba6e64b537bb74beabefc774b4a868ecb9b92ae2c3241547831495b11036209da40daf7142bb295af70076407b803249fc8c32b4e0e921db3c9627a10cdbabc1fcbe2948b8c3b56bbae46c961bd30d5945b2adc77249f4e59f28c9cd85cab0fb7bbac1d45568dccd9c327979d05fa29b53264c302f16062f62d6eda3fbc976d478d807b745aa54b2782d6bc786def3b14b4f4712a0e127ff747e5b37bd9059925f4f781033a4d921f2eafb7959712b8f5ff00abde16ea3d4c9930f024b4761413289beb24458d0e8afc8d6519fe51b04a9d8dc2200e6a1f6934d92c348ca841c1aa0a58ba9bd2694ec26f2a96c37f95b1c89f763234de5d9a18d987c061fb7f0efe9a991d065ae4c5255bcd62c93db39e051ee6247b0b42039de4850c1ddea5933e6b22df08985d70d3ebe9e3b7a64aa6ac535690860b966b6cc16cc774a49a628ec984314e10a834078fb549b47f2743445e15c32332d9ab59036330b40bcca18cde32779356cfda48936e13168aafa3bad13468941b3eb64633e7678225da83c92bffa7af7f3c0c9ea7068e3ee35c23a46a5a5283233f165cfa61fc8c26a4fddc5eeb0763f1f84ec1d21171a3e08d5c99774a7a3cedea2bafc4fafd3004b2e84c2af3feea410c2f70f110446142820e2477284c76d5a59daa8838d9871011d0d94c5042d9196f832832651be8d2ccb9b55928db229db8f36459a1f5667a48236d3a929e0295d4a6586699d0be320b4ed0cea973a3352adc34ba103c71e0502f45d5e46a8ee46dac65144494e4009426c6b1f97f14b08acd8606aa375dd7a07c604141465ae48d590001ef3e167bfbb6f112ec4d0756033b87a19723eee55cbb05ef1bc63c9bb116b2cffe5d21c157f7759b6c401b7fc7552976fc1279d4524424c752bea17449e16d1d70b439ce020a4e7141836c598b390aa44fbbb8521c00c6041c85a95ce69a3f83d0f22ca5c27ec044cfbae749bc60b3db5ffc0be931c7e0c1950aaaceb33da073ee89fbef3378ea782dd4968030db8ff4b543e760f21a36d43274109ed015d393b1842eaa50e352d9a7103310d2b13f6d9b6ba6b01ae3c939ff573de09ebfc4919041365457418abce4c138cebfd197452798abcfc7e1c7c4259b63a945eebc765f870bc9e22b6a110fdef1beeff61170c88bfe11ef10a2abb1604a8add2589bb14ddda1f2a38ec0396b4e4bc8e8a17667931db66bb93100ecf32596dc13d39c4b75bf6afb43aca7427759f597611897692c4b547831f4c1ee17bff2e5c0e7f221d5370c7def4238a739fdbbcf6e4d7c630a2884ee810356eb9cbe603437967bb9673bce4958913301a85271d01df2e349f538b13aa3180d1a8879f99a51757c7e69f8c5e0d5b74076f68947b26061c73282ac186172ababb298efc1e0bd1351a2261258661664737df24c0c95e4074ec6cf3a36faa705e04e99a0781b81dd993857a9d74444cc9a15f6b2eaf6ba700b8f5c02a446307ec1217fe95bd5a1fd310e900568026599d8daa6e96d41a30ed1bdece809d1924f75a7cafa270f7ebb2f5c296c4fe5a66902d5d4031ac9c80617243889d5915f71f7261d61d752e47c562b88f3d1b32ec0fd78cd55f24a32342e840e0a4875f5db06bc0be8383f4c1f1986fff53d598bbc72f7b84f056e5cf9d4de657a0f1932916842f33f06cd5396a6463f3f767404f1cd8ebf28be9aa6387759b56a630b0711c41eb175e243e94bdbd7a6894360c4d6aa21bf3d1ca7ad2f59dc88d5012e3b54416f25e0b88fd419b5eaf7424c28a02a1a502cdd7782fadb975b2583d901346bae5f96a713fca3ff1619a4798748472604e90397507d7809e6e19bb942d363c30a3731e870158854935ffa7547284bf97cd48cee17b5acfaefdc0f212b0be4804a89e8631fe01cd22c790de7f337384d97b173b70f47bdb24e97a53a9784e663c8475c9ad6b3daa6bdd388b7bfc5e9cc880153a8be58f9463ce0ef5af2b7136cf616acbe170e69953fe76a6a4cc293abd16df8139b2c981128863b8e93fd5ca62c2dc3a6c78b9284e0bcf48e088730027e9aaa0c5c66898adad6db73ee370cd9aa3c8beff5ec1a5e7f39c6fe157403d165dc8a2c9166e8dc20fba689072a7681c0388aea88dac84af8b6d0aa079298facf6e027dae1dcc69e3b9f8fe22ec0283adfa4b71f4844e0840303fd6f123427269e3b5bd934751ee119d1ef153619ab1fd169b2c7fc688b4d53b0454ef9e6344c7730f95f1fa0b34b4e19f5bfb1ad182924918d4595347ba5ec68d9f7c44c6b3073d11bf3a3e8f95b7fbfd537a140760d55073d55b8c8d09fa1f14ad02a598243dd0f3415958fe48af2ddb9c40142c41b87ae547de62e240ff4873e34d8e35a07f578be36974f5fd583db84255bb1ebb51838a6c885479743081b10f3d8d13919d2c5d029faa5cb62635145d53bbb406662420919daef13399e730b0b78658ef9e264097a5a95c94655db383c949d62c9746e89a9c2bfc048fcc57cbf1af95ec25aab4d28bd6526f61d1badd9342012e890dfc7152a4438b6ccdbdce256a0a5dd4ecd3b368370e8cd4339cf03298218b9293dd12ff1efa1257e00b11b0e768ee4241b89864a5540dc9e56e6173e1feba70efd7a701123cee38fe62bfa98243bbe729eea73d02793a8845573888402edefe016545ad97efd3def4e38d2cbf551125c8b3e7108c642795ea4585613ee5e8f4698247acbebc74c77bf268e5ed8b1cd7456f3844893ee4a2295008b5a466c67b70532e06a303d959b18feb571a693a17b4a4406701ec405d73589cb25bf8e6c3a751ad61ff972fcad7f2df5b62c23c7693a6026856c2364b9d0eb2220585b3e067bf6d2bac553b83b085ca00586e3bc713e1f80502cc99df745664e9b7c40df2c07b47e865042d9eb52696396a43668e60505c98c3583f85c47a30df90c65ef8e890c0f1fcf9427bee25c4a93c336a00a67664c2e0d7343234b61b99948d1103b4091d35bb8a5b86f7b5451896955532b1eb1bdfb0af5c3f43c13e371db5ecdb1085a00296c9cd24134229ae4977d0e86ae0f0bbc411bd52515620233e4cc1b5c7addf73067dbd64b00ff42732c2c7082b8f61c909dedba660eaea424673bbd76d87d9fb07020ec54352b206eda95774ac64cbebd323e1809c67e91e0794da311dd1a70323dee1300e4544518cd28724632be89277a78b087d7c94c5bc0aa98b4e59b85ccdac657ed70d45c51b55c5657aecf12740418697ed063e33ded4f1942afd639c576dd66476897606993ffa06f82b99585d92b1da4c0f931426ca30f8cfa4d689845c1e24b3bdb48c62fd30236aa5285771b6ac6a602cb9246cf5e1aa0b6f48a1f9cc4e2016ed05d894077c259d1cb69f167f7a72678f6fa0a5ea4b458b3ae9315279011912073b0bb28e5f8895f64911bc8e715c9268b7ab9937da93961c3c6fafd9d2798d3972baaa208c84da86eb1701d9178b469547f17d00d93afae03bc14713d2d60ffc44023b4088d6479d622a2b7af07d76b591d4a9cff947f80ba90041332bb37421b1d480357de1ecbbfac9e7bfdbde45993fac2ea7b0611d60e8d09447d38d00103ab9ed2c5e78a7bc19b45999eeba2dd7ab52594d86220678f4a949388c6e6761f1121cfea0e7657b98abeef80390825569b6950de601009ff598ad7227e91d3cf6c9d1c6daf8702e09b93f64a75d3e2ad8826ecaa73a2f44e22f52a20648f8c2ca558c47c2555ec9e6b317a6d510f525950591214a38b7ea41b92c3a411</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css"></div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://blog.beyback.top">Charles</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://blog.beyback.top/2020/07/09/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/">https://blog.beyback.top/2020/07/09/%E9%87%91%E5%B7%A5%E5%AE%9E%E4%B9%A0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://blog.beyback.top/tags/%E6%95%99%E7%A8%8B/">教程</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://blog.beyback.top/tags/%E5%AE%9E%E4%B9%A0/">实习</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://blog.beyback.top/tags/%E5%AD%A6%E4%B8%9A/">学业</a></span></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://beyback.top/images/alipay.png"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://beyback.top/images/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/07/18/%E5%85%AC%E5%91%8A/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">公告</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/07/07/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/"><span class="paginator-prev__text">Hexo搭建博客教程</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://beyback.top/images/touxiang.png" alt="avatar"></div><p class="sidebar-ov-author__text">今天的最好表现就是明天的最低要求</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/chang-qing-teng-23-41" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://wpa.qq.com/msgrd?v=3&amp;uin=3447748561&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="mailto:admin@beyback.top" target="_blank" rel="noopener" data-popover="邮箱" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Charles</span><span class="footer__devider">|</span><span><a href="http://www.beian.miit.gov.cn/" target="blank">冀ICP备20014012号-1</a> | <a href="https://icp.gov.moe/" target="blank">萌ICP备<a href= https://icp.gov.moe/?keyword=202052014 target="blank">202052014号</a>  |  <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279046169&web_id=1279046169"></script></span></div><div><script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279046169'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1279046169%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script><p>今天最好的表现就是每天最低的要求</p></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);</script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'HgGMkqu9Ry1W6sgpGYPl6Siy-gzGzoHsz',
+    appKey: 'frrh1fv6JKu07Wn9qSmzl7Iz',
+    notify: true,
+    verify: true,
+    placeholder: 'Just go go',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: true,
+    recordIP: true,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.0.1"></script><script src="/js/stun-boot.js?v=2.0.1"></script><script src="/js/scroll.js?v=2.0.1"></script><script src="/js/header.js?v=2.0.1"></script><script src="/js/sidebar.js?v=2.0.1"></script></body></html>
